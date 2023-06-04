@@ -346,7 +346,19 @@ impl FromStr for Card {
 
 impl PartialOrd for Card {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        self.rank().partial_cmp(&other.rank())
+        let s1 = match self.suit() {
+            Suit::Clubs => 0,
+            Suit::Hearts => 1,
+            Suit::Spades => 2,
+            Suit::Diamonds => 3,
+        };
+        let s2 = match other.suit() {
+            Suit::Clubs => 0,
+            Suit::Hearts => 1,
+            Suit::Spades => 2,
+            Suit::Diamonds => 3,
+        };
+        s1.partial_cmp(&s2)
     }
 }
 
