@@ -100,6 +100,28 @@ pub struct Card {
     unique_integer: i32,
 }
 
+impl Ord for Card {
+    fn cmp(&self, other: &Self) -> Ordering {
+        let s1 = match self.suit() {
+            Suit::Clubs => 0,
+            Suit::Hearts => 1,
+            Suit::Spades => 2,
+            Suit::Diamonds => 3,
+        };
+        let s2 = match other.suit() {
+            Suit::Clubs => 0,
+            Suit::Hearts => 1,
+            Suit::Spades => 2,
+            Suit::Diamonds => 3,
+        };
+        match s1.cmp(&s2) {
+            Ordering::Less => Ordering::Less,
+            Ordering::Equal => self.rank().as_i32().cmp(&other.rank().as_i32()),
+            Ordering::Greater => Ordering::Greater,
+        }
+    }
+}
+
 impl Card {
     /// Create a new, singular [`Card`] given a [`Rank`] and a [`Suit`] variant.
     /// This constructor is verbose, but explicit. It is not often that you
