@@ -255,10 +255,10 @@ impl Card {
     /// }
     /// ```
     pub fn generate_deck() -> impl Iterator<Item = Self> {
-        Rank::ALL_VARIANTS
+        Suit::ALL_VARIANTS
             .iter()
-            .cartesian_product(Suit::ALL_VARIANTS.iter())
-            .map(|(&rank, &suit)| Self::new(rank, suit))
+            .cartesian_product(Rank::ALL_VARIANTS.iter())
+            .map(|(&suit, &rank)| Self::new(rank, suit))
     }
 
     /// Like [`Card::generate_deck`], but generate a shuffled deck using
