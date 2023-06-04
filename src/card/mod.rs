@@ -364,11 +364,7 @@ impl Ord for Card {
             Suit::Spades => 2,
             Suit::Diamonds => 3,
         };
-        match s1.cmp(&s2) {
-            Ordering::Less => Ordering::Less,
-            Ordering::Equal => self.rank().as_i32().cmp(&other.rank().as_i32()),
-            Ordering::Greater => Ordering::Greater,
-        }
+        s1.cmp(&s2)
     }
 }
 
