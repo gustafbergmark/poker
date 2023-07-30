@@ -65,6 +65,7 @@ use std::{
 };
 
 use itertools::Itertools;
+use serde::{Deserialize, Serialize};
 use variter::VarIter;
 
 #[doc(inline)]
@@ -95,7 +96,7 @@ use crate::{constants::PRIMES, error::ParseCardError};
 /// ```
 ///
 /// [`Display`]: std::fmt::Display
-#[derive(Copy, Clone, PartialEq, Eq, Hash)]
+#[derive(Copy, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct Card {
     unique_integer: i32,
 }

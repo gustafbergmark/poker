@@ -25,6 +25,9 @@ rand = { version = "0.8", optional = true }
 cfg-if = "1"
 # Table caching
 phf = { version = "0.10", optional = true }
+#Serializing and Deserializing
+serde = { version = "1.0.158", features = ["derive"] }
+
 
 [features]
 default = ["rand"]
