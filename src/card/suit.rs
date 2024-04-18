@@ -2,6 +2,7 @@ use std::{
     convert::TryFrom,
     fmt::{self, Write},
 };
+use serde::{Deserialize, Serialize};
 
 use variter::derive_var_iter;
 
@@ -10,7 +11,7 @@ derive_var_iter! {
         #[doc(hidden)]
     }
     /// An enumeration type for representing the four card suits.
-    #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+    #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
     pub enum Suit {
         /// The suit of clubs.
         Clubs,
